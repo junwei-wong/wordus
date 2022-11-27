@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect } from 'react'
 import Wordlist from './../words_dictionary.json'
 import Select from 'react-select'
 
-function SearchBox() {
+function SearchBox({ setParentSearchTerm }: { setParentSearchTerm(word: string): void }) {
   const wordListArray = Object.keys(Wordlist)
   const [count, setCount] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
@@ -27,7 +27,7 @@ function SearchBox() {
 
   const onChangeHandler = (value: any) => {
     if (value)
-      console.log(value)
+      setParentSearchTerm(value)
     setIsLoading(false)
   }
 
